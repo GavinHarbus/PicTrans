@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PicTrans</title>
+    <meta charset="utf-8"/>
+    <meta content="user-scalable=1,initial-scale=1,minimum-scale=1" name="viewport"/>
+    <!-- Bootstrap -->
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700" rel="stylesheet"/>
+    <link href="/static/css/main.2680b2521d08e92a174b.css" rel="stylesheet"/>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-114831623-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-114831623-1');
+    </script>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <div role="banner">
+        <style>
+        .github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}
+        </style>
+
+        <div class="header-container">
+          <img alt="PicTrans" class="header-container__header-image" src="/static/img/logo.png"/>
+          <h1 class="header-container__header-content">
+          Transform pictures into an artistic style
+          </h1>
+        </div>
+      </div>
+
+      <div class="demo-upload-container" role="main">
+        <form enctype="multipart/form-data" action="/upload" method="post">
+          <div class="custom-file-container" data-upload-id="myFirstImage">
+            <label>
+              Upload (Single File)
+              <a class="custom-file-container__image-clear" href="javascript:void(0)" title="Clear Image">×</a>
+            </label>
+            <label class="custom-file-container__custom-file">
+              <input accept="image/*" aria-label="Choose File" class="custom-file-container__custom-file__custom-file-input" id="customFile" type="file" name="upload" />
+              <input name="MAX_FILE_SIZE" type="hidden" value="10485760"/>
+              <span class="custom-file-container__custom-file__custom-file-control"></span>
+            </label>
+            <div class="custom-file-container__image-preview"></div>
+          </div>
+          <div class="col-md-3 col-md-offset-3">
+            <select class="form-control" data-placement="top" title="Choose one style" name="style">
+              <option value="0">Style</option>
+              <option value="1">LaMuse</option>
+              <option value="2">Rain</option>
+              <option value="3">Scream</option>
+              <option value="4">Udnie</option>
+              <option value="5">Wave</option>
+              <option value="6">Wreck</option>
+              <option value="7">Sunset</option>
+              <option value="8">StarNight</option>
+              <option value="9">City</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Upload and transform pic style">Submit</button>
+        </form>
+
+        <div class="custom-file-container" data-upload-id="myUniqueUploadId">
+          <label>
+            Result (Single File)
+            <a class="custom-file-container__image-clear" href="javascript:void(0)" title="Clear Image" style="display: none;">×</a>
+          </label>
+          <label class="custom-file-container__custom-file">
+            <input accept="image/*" aria-label="Choose File" class="custom-file-container__custom-file__custom-file-input" id="customFile" type="file"/>
+            <input name="MAX_FILE_SIZE" type="hidden" value="10485760"/>
+            <span class="custom-file-container__custom-file__custom-file-control" style="display: none;"></span>
+          </label>
+          <div class="custom-file-container__image-preview"></div>
+          <a href="{{ .respath }}" download='{{ .filename }}'><button class="btn btn-default col-md-offset-5" data-toggle="tooltip" data-placement="top" title="Download result">Download</button></a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="alert alert-success text-center" role="alert">{{ .message }}</div> 
+        </div>
+      </div>
+    </div>
+
+    <hr>
+
+    <footer class="footer">
+      <p class="text-center" id="footer-text">Copyright © 2019, 赵飞洋, All Rights Reserved<br><small>some materials are collected from Internet</small></p>
+    </footer>
+
+    <script src="/static/js/jquery-2.2.4.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/es6-promise.auto.js"></script>
+    <script src="/static/js/fetch.js"></script>
+    <script src="/static/js/file-upload-with-preview.min.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      })
+
+      var singleupload = new FileUploadWithPreview('myFirstImage')
+      singleupload.addImagesFromPath(['{{ .rawpath }}'])
+
+      var resdisplay = new FileUploadWithPreview('myUniqueUploadId')
+      resdisplay.addImagesFromPath(['{{ .respath }}'])
+
+    </script>
+  </body>
+</html>
