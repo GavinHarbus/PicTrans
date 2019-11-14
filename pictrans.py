@@ -1,4 +1,3 @@
-#! /opt/local/bin/python
 from PIL import Image
 import argparse as apa
 

@@ -22,12 +22,12 @@ func main() {
         return message
     })*/
 
-    /*fileserver := iris.FileServer("./static")
+    fileserver := iris.FileServer("./static")
     h := iris.StripPrefix("/static", fileserver)
-    app.Get("/static/{f:path}", h)*/
+    app.Get("/static/{f:path}", h)
 
     app.RegisterView(templates)
-    app.StaticWeb("/static","./static")
+    //app.StaticWeb("/static","./static")
 
     app.Get("/", func (ctx iris.Context) {
         ctx.ViewData("rawpath","/static/pics/20190710155351.jpg")
@@ -68,41 +68,45 @@ func main() {
 
         var cmd *exec.Cmd
         if style == "0" {
-            cmd = exec.Command("./pictrans.py", "--input", filename)
+            cmd = exec.Command("python3", "./pictrans.py", "--input", filename)
         } else if style == "1" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/la_muse.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/la_muse.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "2" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/rain_princess.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/rain_princess.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "3" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/scream.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/scream.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "4" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/udnie.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/udnie.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "5" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/wave.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/wave.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "6" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/wreck.ckpt", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/wreck.ckpt", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "7" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/sunset", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/sunset", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "8" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/star", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/star", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         } else if style == "9" {
-            cmd = exec.Command("./evaluate.py", "--checkpoint", "model/city", 
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/city", 
+                "--in-path", "./static/pics/"+filename+".jpg", 
+                "--out-pat", "./static/pics/res"+filename+".jpg")
+        } else if style == "10" {
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/monet", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
         }
