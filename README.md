@@ -12,6 +12,7 @@ This is a ZJU AI homework project. This project aims to transfer our pictures to
 1. Go v1.13.4 or above
 2. Go Iris v12.0.1 or above
 3. Python3.6
+4. ffmpeg
 
 #### Installation
 
