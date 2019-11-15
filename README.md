@@ -3,7 +3,9 @@
 
 #### About
 
-This is a ZJU AI homework project. This project aims to transfer our pictures to another artistic style such as Monet, Vincent van Gogh... I hope every one of us can enjoy the beauty of art while suffering from the boring life. This may does a little to that aim.
+This is a ZJU AI homework project. This project aims to transfer our pictures to another artistic style such as Monet, Vincent van Gogh... I hope every one of us can enjoy the beauty of art while suffering from the boring life. This may does a little to that aim.  
+
+![](http://45.32.68.50/large/006y8mN6ly1g8wf72u861j32020u04qu.jpg)
 
 #### Requirements
 
