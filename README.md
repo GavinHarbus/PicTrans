@@ -96,3 +96,4 @@ git clone https://github.com/GavinHarbus/PicTrans.git
     <img src="https://avatars2.githubusercontent.com/u/630149?s=400&v=4" width="50px">
 </a>
 
+***Thanks for every one of our group!***
