@@ -109,6 +109,10 @@ func main() {
             cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/monet", 
                 "--in-path", "./static/pics/"+filename+".jpg", 
                 "--out-pat", "./static/pics/res"+filename+".jpg")
+        } else if style == "11" {
+            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/vastland", 
+                "--in-path", "./static/pics/"+filename+".jpg", 
+                "--out-pat", "./static/pics/res"+filename+".jpg")
         }
         
         _, err = cmd.Output()
