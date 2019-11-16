@@ -75,3 +75,24 @@ git clone https://github.com/GavinHarbus/PicTrans.git
 
 [**MIT**](https://github.com/GavinHarbus/PicTrans/LICENSE)
 
+#### Group Members
+
+<a href="https://github.com/GavinHarbus">
+    <img src="https://avatars1.githubusercontent.com/u/23392860?s=460&v=4" width="50px">
+</a>
+<a href="https://github.com/SuperVivian">
+    <img src="https://avatars3.githubusercontent.com/u/29708092?s=400&v=4" width="50px">
+</a>
+<a href="https://github.com/jojofly">
+    <img src="https://avatars3.githubusercontent.com/u/47408058?s=400&v=4" width="50px">
+</a>
+<a href="https://github.com/pppig1994">
+    <img src="https://avatars1.githubusercontent.com/u/46932277?s=400&v=4" width="50px">
+</a>
+<a href="https://github.com/ls889">
+    <img src="https://avatars3.githubusercontent.com/u/53811920?s=400&v=4" width="50px">
+</a>
+<a href="https://github.com/victor1999">
+    <img src="https://avatars2.githubusercontent.com/u/630149?s=400&v=4" width="50px">
+</a>
+
