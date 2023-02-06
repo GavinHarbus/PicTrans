@@ -66,54 +66,7 @@ func main() {
 
         io.Copy(out,file)
 
-        var cmd *exec.Cmd
-        if style == "0" {
-            cmd = exec.Command("python3", "./pictrans.py", "--input", filename)
-        } else if style == "1" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/la_muse.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "2" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/rain_princess.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "3" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/scream.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "4" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/udnie.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "5" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/wave.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "6" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/wreck.ckpt", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "7" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/sunset", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "8" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/star", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "9" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/city", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "10" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/monet", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        } else if style == "11" {
-            cmd = exec.Command("python3", "./evaluate.py", "--checkpoint", "model/vastland", 
-                "--in-path", "./static/pics/"+filename+".jpg", 
-                "--out-pat", "./static/pics/res"+filename+".jpg")
-        }
+        cmd := buildCmd(style, filename)
         
         _, err = cmd.Output()
 
@@ -130,4 +83,29 @@ func main() {
     })
 
     app.Run(iris.Addr(":8080"))
+}
+
+func buildCmd(style string, filename string) *exec.Cmd {
+    switch style {
+    case "0":
+        return exec.Command("python3", "./pictrans.py", "--input", filename)
+    default:
+        model := modelMap[style]
+        return exec.Command("python3", "./evaluate.py", "--checkpoint", model, 
+        "--in-path", "./static/pics/"+filename+".jpg", 
+        "--out-pat", "./static/pics/res"+filename+".jpg")
+    }
+}
+
+var modelMap = map[string]string{
+    "1" : "model/la_muse.ckpt",
+    "2" : "model/rain_princess.ckpt",
+    "3" : "model/scream.ckpt",
+    "4" : "model/udnie.ckpt",
+    "5" : "model/wave.ckpt",
+    "6" : "model/sunset",
+    "7" : "model/star",
+    "8" : "model/city",
+    "9" : "model/monet",
+    "10" : "model/vastland",
 }
